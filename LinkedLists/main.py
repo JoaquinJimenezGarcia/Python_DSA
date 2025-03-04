@@ -79,7 +79,32 @@ class LinkedList:
             self.tail = None
 
         return temp
-
+    
+    def get(self, index):
+      if self.length == 0 or index < 0 or index >= self.length:
+          return None
+      
+      if self.length == 1:
+          return self.head
+      
+      temp = self.head
+      
+      for _ in range(index):
+        temp = temp.next
+        
+      return temp
+    
+    def set_value(self, index, value):
+      if self.length == 0 or index < 0 or index >= self.length:
+          return None
+        
+      temp = self.head
+      
+      for _ in range(index):
+        temp = temp.next
+      
+      temp.value = value
+    
     def insert(self, index, value):
         pass
 
@@ -112,4 +137,10 @@ my_linked_list.print_list()
 
 print("LL with first pop")
 my_linked_list.pop_first()
+my_linked_list.print_list()
+print("Get index of X", my_linked_list.get(2).value)
+
+print("LL with the index 0 modified")
+my_linked_list.set_value(0, 99)
+my_linked_list.set_value(3, 0)
 my_linked_list.print_list()
